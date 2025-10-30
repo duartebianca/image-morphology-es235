@@ -92,11 +92,11 @@ def create_dendrogram_plotly(histograms: Dict[str, np.ndarray],
         },
         xaxis={
             'title': 'Componente',
-            'titlefont': {'size': 14}
+            'tickfont': {'size': 14}
         },
         yaxis={
             'title': f'Distância ({metric})',
-            'titlefont': {'size': 14}
+            'tickfont': {'size': 14}
         },
         width=1000,
         height=600,

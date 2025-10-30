@@ -38,8 +38,9 @@ pip install -r requirements.txt
 ### 3️⃣ Executar
 ```powershell
 cd src
-python main.py
+python main.py 
 ```
+Obs: se não funcionar com python, testa com python3.
 
 ### 4️⃣ Resultados
 Todos os entregáveis serão gerados em `data/out/`:

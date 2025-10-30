@@ -49,7 +49,7 @@ class VHIVUSPipeline:
             str(self.gs_path)
         )
         
-        print(f"\n✓ Dados carregados: {len(self.vh_frames)} frames")
+        print(f"\n Dados carregados: {len(self.vh_frames)} frames")
     
     def create_masks(self):
         print("\n=== Criando máscaras binárias ===")
@@ -79,7 +79,7 @@ class VHIVUSPipeline:
                 print(f"  Frame {frame_idx}: FB={measures['FB']:5d}, "
                       f"NC={measures['NC']:5d}, NC@DC={measures['NC_AT_DC']:5d}")
         
-        print(f"✓ Medidas calculadas para {len(measures_list)} frames")
+        print(f" Medidas calculadas para {len(measures_list)} frames")
         
         # Classificação automática de placas (Item G)
         print("\n=== Classificando tipos de placa (Item G) ===")
@@ -105,7 +105,7 @@ class VHIVUSPipeline:
         for i, plaque_type in enumerate(plaque_types):
             measures_list[i]['plaque_type'] = plaque_type
         
-        print(f"✓ {len(plaque_types)} frames classificados")
+        print(f" {len(plaque_types)} frames classificados")
         
         # Cria DataFrame com classificações
         self.df_measures = self._create_measures_dataframe(measures_list)
@@ -184,7 +184,7 @@ class VHIVUSPipeline:
             # Aba "histograms" (Item III)
             self.df_histograms.to_excel(writer, sheet_name='histograms', index=False)
         
-        print(f"✓ Resultados salvos: {excel_path}")
+        print(f" Resultados salvos: {excel_path}")
         print(f"  - Aba 'itens_i_ii': {len(self.df_measures)} frames")
         print(f"  - Aba 'histograms': {len(self.df_histograms)} componentes")
     

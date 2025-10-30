@@ -98,4 +98,4 @@ def save_tiff_stack(frames: List[np.ndarray], output_path: str) -> None:
     frames_uint8 = [frame.astype(np.uint8) for frame in frames]
     tifffile.imwrite(str(output_path), np.array(frames_uint8), compression='lzw')
     
-    print(f"✓ Salvo: {output_path.name} ({len(frames)} frames)")
+    print(f" Salvo: {output_path.name} ({len(frames)} frames)")

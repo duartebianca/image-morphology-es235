@@ -90,7 +90,7 @@ def process_all_frames(vh_frames: List[np.ndarray],
             print(f"  Frame {frame_idx}: FB={measures['FB']}, "
                   f"NC={measures['NC']}, NC@DC={measures['NC_AT_DC']}")
     
-    print(f"✓ Processados {len(results)} frames")
+    print(f" Processados {len(results)} frames")
     
     return results
 

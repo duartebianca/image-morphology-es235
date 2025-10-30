@@ -136,7 +136,7 @@ def process_histograms_all_components(masks_all_frames: List[Dict[str, np.ndarra
     histograms['NC@DC'] = compute_histogram_256(nc_at_dc_all)
     print(f"    Total de pixels interiores: {len(nc_at_dc_all)}")
     
-    print("✓ Histogramas computados")
+    print(" Histogramas computados")
     
     return histograms
 

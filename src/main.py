@@ -11,6 +11,7 @@ from color_map import create_binary_masks_optimized, COMPONENTS
 from measures import measure_frame_complete, create_results_dataframe, print_summary_statistics
 from hist import process_histograms_all_components, create_histogram_dataframe, plot_histograms
 from dendro import create_dendrogram_plotly, print_distance_matrix, find_most_similar_pairs
+from plaque_classifier import classify_all_frames, print_classification_report
 
 
 class VHIVUSPipeline:
@@ -78,10 +79,39 @@ class VHIVUSPipeline:
                 print(f"  Frame {frame_idx}: FB={measures['FB']:5d}, "
                       f"NC={measures['NC']:5d}, NC@DC={measures['NC_AT_DC']:5d}")
         
-        # Cria DataFrame
+        print(f"✓ Medidas calculadas para {len(measures_list)} frames")
+        
+        # Classificação automática de placas (Item G)
+        print("\n=== Classificando tipos de placa (Item G) ===")
+        
+        # Prepara dados para classificação
+        frame_areas = []
+        for measures in measures_list:
+            areas = {
+                'fb_area': measures['FB'],
+                'ff_area': measures['FF'],
+                'nc_area': measures['NC'],
+                'dc_area': measures['DC'],
+                'nc@dc_area': measures['NC_AT_DC'],
+                'lumen_area': measures['LUMEN'],
+                'media_area': measures['MEDIA']
+            }
+            frame_areas.append(areas)
+        
+        # Classifica todos os frames
+        plaque_types = classify_all_frames(frame_areas)
+        
+        # Adiciona classificações aos measures
+        for i, plaque_type in enumerate(plaque_types):
+            measures_list[i]['plaque_type'] = plaque_type
+        
+        print(f"✓ {len(plaque_types)} frames classificados")
+        
+        # Cria DataFrame com classificações
         self.df_measures = self._create_measures_dataframe(measures_list)
         
-        print(f" Medidas calculadas para {len(measures_list)} frames")
+        # Relatório de classificação
+        print_classification_report(plaque_types)
         
         # Estatísticas resumidas
         print_summary_statistics(self.df_measures)
@@ -92,7 +122,7 @@ class VHIVUSPipeline:
         for measures in measures_list:
             row = {
                 'quadro': measures['quadro'],
-                'plaque_type': '',  
+                'plaque_type': measures.get('plaque_type', ''),  # Usa classificação automática
                 'lumen_area': measures['LUMEN'],
                 'media_area': measures['MEDIA'],
                 'fb_area': measures['FB'],

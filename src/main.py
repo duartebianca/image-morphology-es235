@@ -15,7 +15,7 @@ from dendro import create_dendrogram_plotly, print_distance_matrix, find_most_si
 
 class VHIVUSPipeline:
     
-    def __init__(self, vh_path: str, gs_path: str, output_dir: str = "data/out"):
+    def __init__(self, vh_path: str, gs_path: str, output_dir: str = "../data/out"):
         self.vh_path = Path(vh_path)
         self.gs_path = Path(gs_path)
         self.output_dir = Path(output_dir)

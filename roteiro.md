@@ -1,8 +1,6 @@
 # ROTEIRO PDI — Análise Morfológica de Imagens VH-IVUS
 > **Convenções:**
 > - **A = Pessoa 1** | **B = Pessoa 2**
-> - Duração: ~14 minutos
-> - Mostrar no Colab + navegação estratégica no código
 
 ---
 
@@ -10,7 +8,7 @@
 
 **[FALA DIRETA]**
 
-"Bom dia/tarde! Nosso projeto implementa **análise quantitativa de imagens VH-IVUS** usando **morfologia matemática** para quantificar componentes de placa aterosclerótica. 
+"Boa tarde! Nosso projeto implementa **análise quantitativa de imagens VH-IVUS** usando **morfologia matemática** para quantificar componentes de placa aterosclerótica. 
 
 Vamos mostrar:
 1. **Como o código funciona** (arquitetura e funções principais)
